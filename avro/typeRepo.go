@@ -3,6 +3,7 @@ package avro
 import (
   "fmt"
   "github.com/flipp-oss/protoc-gen-avro/input"
+  "slices"
   "strings"
 )
 
@@ -43,6 +44,11 @@ func (r *TypeRepo) SeenType(t NamedType) {
 
 func (r *TypeRepo) GetType(name string) (Type, error) {
   if r.seenTypes[name] {
+    if r.Types[name] != nil {
+      if slices.Contains(r.CollapseFields, r.Types[name].GetName()) {
+        return r.Types[name].(Record).Fields[0].Type, nil
+      }
+    }
     return Bare(r.MappedNamespace(name[1:])), nil
   }
   t, ok := r.Types[name]

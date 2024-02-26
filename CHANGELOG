@@ -1,5 +1,9 @@
 # Changelog
 
+# UNRELEASED
+
+- Fix: `collapse_fields` was only working on the first instance of the field, not when it was found inside a map etc. later on.
+
 # 0.5 - 2024-02-26
 
 - Fix: oneofs were not being emitted.
