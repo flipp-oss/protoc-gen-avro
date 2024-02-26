@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "TypeB",
+  "namespace": "mynamespace",
+  "fields": [
+    {
+      "name": "bar",
+      "type": "string",
+      "default": ""
+    }
+  ]
+}

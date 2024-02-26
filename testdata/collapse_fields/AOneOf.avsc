@@ -1,0 +1,37 @@
+{
+  "type": "record",
+  "name": "AOneOf",
+  "namespace": "testdata",
+  "fields": [
+    {
+      "name": "a_oneof",
+      "type": [
+        {
+          "type": "record",
+          "name": "TypeA",
+          "namespace": "testdata",
+          "fields": [
+            {
+              "name": "foo",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "type": "record",
+          "name": "TypeB",
+          "namespace": "testdata",
+          "fields": [
+            {
+              "name": "bar",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "default": null
+    }
+  ]
+}

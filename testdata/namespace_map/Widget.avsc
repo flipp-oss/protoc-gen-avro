@@ -181,6 +181,50 @@
         "values": "mynamespace.StringList"
       },
       "default": {}
+    },
+    {
+      "name": "a_one_of",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "AOneOf",
+          "namespace": "mynamespace",
+          "fields": [
+            {
+              "name": "a_oneof",
+              "type": [
+                {
+                  "type": "record",
+                  "name": "TypeA",
+                  "namespace": "mynamespace",
+                  "fields": [
+                    {
+                      "name": "foo",
+                      "type": "string",
+                      "default": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "record",
+                  "name": "TypeB",
+                  "namespace": "mynamespace",
+                  "fields": [
+                    {
+                      "name": "bar",
+                      "type": "string",
+                      "default": ""
+                    }
+                  ]
+                }
+              ],
+              "default": null
+            }
+          ]
+        }
+      ],
+      "default": null
     }
   ]
 }

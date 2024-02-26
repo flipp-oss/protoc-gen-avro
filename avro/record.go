@@ -78,6 +78,7 @@ func RecordFromProto(proto *descriptorpb.DescriptorProto, namespace string) []Na
 		if field.OneofIndex != nil && !field.GetProto3Optional() {
 			union := oneofs[field.GetOneofIndex()].Type.(Union)
 			union.Types = append(union.Types, FieldTypeFromProto(field))
+			oneofs[field.GetOneofIndex()].Type = union
 		} else {
 			fields = append(fields, FieldFromProto(field))
 		}

@@ -9,10 +9,26 @@ message StringList {
   repeated string data = 1;
 }
 
+message TypeA {
+  string foo = 1;
+}
+
+message TypeB {
+  string bar = 2;
+}
+
+message AOneOf {
+  oneof a_oneof {
+    TypeA a = 1;
+    TypeB b = 2;
+  }
+}
+
 message Widget {
   optional google.protobuf.Timestamp from_date = 1;
   google.protobuf.Timestamp to_date = 2;
   Foobar foobar = 3;
   StringList strings = 4;
   map<string, StringList> string_map = 5;
+  optional AOneOf a_one_of = 6;
 }

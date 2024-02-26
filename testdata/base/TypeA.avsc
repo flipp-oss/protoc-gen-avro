@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "TypeA",
+  "namespace": "testdata",
+  "fields": [
+    {
+      "name": "foo",
+      "type": "string",
+      "default": ""
+    }
+  ]
+}
