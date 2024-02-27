@@ -13,6 +13,7 @@ type TypeRepo struct {
   NamespaceMap map[string]string
   CollapseFields []string
   RemoveEnumPrefixes bool
+  PreserveNonStringMaps bool
 }
 
 func NewTypeRepo(params input.Params) *TypeRepo {
@@ -21,6 +22,7 @@ func NewTypeRepo(params input.Params) *TypeRepo {
     NamespaceMap: params.NamespaceMap,
     CollapseFields: params.CollapseFields,
     RemoveEnumPrefixes: params.RemoveEnumPrefixes,
+    PreserveNonStringMaps: params.PreserveNonStringMaps,
   }
 }
 

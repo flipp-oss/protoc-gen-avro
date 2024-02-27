@@ -2,6 +2,8 @@
 
 # UNRELEASED
 
+- Feature / breaking change: add `preserve_non_string_maps` and change default behavior to turn all maps into string-keyed ones.
+
 # 0.6.1 - 2024-02-27
 
 - Fix: `collapse_fields` was only working on the first instance of the field, not when it was found inside a map etc. later on.

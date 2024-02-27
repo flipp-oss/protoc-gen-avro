@@ -130,26 +130,10 @@
           {
             "name": "a_yowza_map",
             "type": {
-              "type": "array",
-              "items": {
-                "type": "record",
-                "name": "AYowzaMapEntry",
-                "namespace": "testdata.Foobar",
-                "fields": [
-                  {
-                    "name": "key",
-                    "type": "boolean",
-                    "default": false
-                  },
-                  {
-                    "name": "value",
-                    "type": "testdata.Yowza",
-                    "default": ""
-                  }
-                ]
-              }
+              "type": "map",
+              "values": "testdata.Yowza"
             },
-            "default": []
+            "default": {}
           }
         ]
       },
@@ -192,7 +176,7 @@
           "namespace": "testdata",
           "fields": [
             {
-              "name": "a_oneof",
+              "name": "oneof_types",
               "type": [
                 {
                   "type": "record",

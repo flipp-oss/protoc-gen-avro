@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "name": "AYowzaMapEntry",
+  "namespace": "testdata.Foobar",
+  "fields": [
+    {
+      "name": "key",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "value",
+      "type": {
+        "type": "record",
+        "name": "Yowza",
+        "namespace": "testdata",
+        "fields": [
+          {
+            "name": "hoo_boy",
+            "type": "float",
+            "default": 0
+          }
+        ]
+      },
+      "default": {}
+    }
+  ]
+}

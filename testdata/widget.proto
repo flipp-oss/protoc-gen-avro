@@ -18,7 +18,7 @@ message TypeB {
 }
 
 message AOneOf {
-  oneof a_oneof {
+  oneof oneof_types {
     TypeA a = 1;
     TypeB b = 2;
   }

@@ -94,6 +94,58 @@ enum Category {
 }
 ```
 
+* `preserve_non_string_maps` - if set to true, will replace maps with non-string keys with records. E.g. if you have a map like:
+```protobuf
+message MyRecord {
+  map<int32, string> my_field = 1;
+}
+```
+
+...with this option off, it will be translated into:
+
+```json
+{
+  "type": "record",
+  "name": "MyRecord",
+  "fields": [
+    {
+      "name": "my_field",
+      "type": {
+        "type": "map",
+        "values": "string"
+      }
+    }
+  ]
+}
+```
+
+...but with it on, it will be translated into:
+
+```json
+{
+  "type": "record",
+  "name": "MyRecord",
+  "fields": [
+    {
+      "name": "my_field",
+      "type": {
+        "type": "record",
+        "fields": [
+          {
+            "name": "key",
+            "type": "int"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
 ---
 
 To Do List:

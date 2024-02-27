@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "Yowza",
+  "namespace": "testdata",
+  "fields": [
+    {
+      "name": "hoo_boy",
+      "type": "float",
+      "default": 0
+    }
+  ]
+}
