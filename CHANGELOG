@@ -6,7 +6,6 @@
 
 - Fix: Union types are now flattened (i.e. if a union has a type which is another union, they will be combined).
 - Feature / breaking change: add `preserve_non_string_maps` and change default behavior to turn all maps into string-keyed ones.
-- Fix: Flatten any instances of `{type: { type: ... } }`
 
 # 0.6.1 - 2024-02-27
 

@@ -18,19 +18,8 @@ func (t Field) ToJSON(types *TypeRepo) (any, error) {
 		return nil, fmt.Errorf("error parsing field type %s %w", t.Name, err)
 	}
   jsonMap := orderedmap.New()
-	mapType, ok := typeJson.(*orderedmap.OrderedMap)
-	if ok {
-		_, isType := mapType.Get("type")
-		if isType { // we merge the type with the current type
-			for _, k := range mapType.Keys() {
-				val, _ := mapType.Get(k)
-				jsonMap.Set(k, val)
-			}
-		}
-	} else {
-	  jsonMap.Set("type", typeJson)
-	}
   jsonMap.Set("name", t.Name)
+  jsonMap.Set("type", typeJson)
   if t.Default != "" {
     jsonMap.Set("default", t.Default)
   } else {
