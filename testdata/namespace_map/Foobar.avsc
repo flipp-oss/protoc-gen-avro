@@ -35,8 +35,7 @@
             "default": 0
           }
         ]
-      },
-      "default": {}
+      }
     },
     {
       "name": "blarps",
@@ -96,24 +95,43 @@
       "type": {
         "type": "map",
         "values": "string"
-      },
-      "default": {}
+      }
     },
     {
       "name": "a_blarp_map",
       "type": {
         "type": "map",
         "values": "mynamespace.Blarp"
-      },
-      "default": {}
+      }
     },
     {
       "name": "a_yowza_map",
       "type": {
         "type": "map",
         "values": "mynamespace.Yowza"
+      }
+    },
+    {
+      "name": "string_lists",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "StringList",
+          "namespace": "mynamespace",
+          "fields": [
+            {
+              "name": "data",
+              "type": {
+                "type": "array",
+                "items": "string"
+              },
+              "default": []
+            }
+          ]
+        }
       },
-      "default": {}
+      "default": []
     }
   ]
 }

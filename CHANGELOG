@@ -2,6 +2,9 @@
 
 # UNRELEASED
 
+- Revert and re-fix the issue with flattened `type` declarations.
+- Stop emitting a default of `{}` for records as Avro can't actually handle this.
+
 # 0.7 - 2024-02-27
 
 - Fix: Union types are now flattened (i.e. if a union has a type which is another union, they will be combined).

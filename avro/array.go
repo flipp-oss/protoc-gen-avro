@@ -23,6 +23,17 @@ func (t Array) ToJSON(types *TypeRepo) (any, error) {
     if returnedType == "map" {
       return itemJson, nil
     }
+    returnedMap, ok := returnedType.(*orderedmap.OrderedMap)
+    if ok {
+     _, hasType := returnedMap.Get("type")
+     if hasType {
+       // it's adding an extra nesting of type: { type: ... } } - we have to flatten it
+       for _, k := range returnedMap.Keys() {
+         val, _ := returnedMap.Get(k)
+          mapType.Set(k, val)
+       }
+     }
+    }
   }
   jsonMap := orderedmap.New()
   jsonMap.Set("type", "array")

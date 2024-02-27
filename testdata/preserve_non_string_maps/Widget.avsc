@@ -55,8 +55,7 @@
                   "default": 0
                 }
               ]
-            },
-            "default": {}
+            }
           },
           {
             "name": "blarps",
@@ -116,16 +115,14 @@
             "type": {
               "type": "map",
               "values": "string"
-            },
-            "default": {}
+            }
           },
           {
             "name": "a_blarp_map",
             "type": {
               "type": "map",
               "values": "testdata.Blarp"
-            },
-            "default": {}
+            }
           },
           {
             "name": "a_yowza_map",
@@ -150,37 +147,43 @@
               }
             },
             "default": []
-          }
-        ]
-      },
-      "default": {}
-    },
-    {
-      "name": "strings",
-      "type": {
-        "type": "record",
-        "name": "StringList",
-        "namespace": "testdata",
-        "fields": [
+          },
           {
-            "name": "data",
+            "name": "string_lists",
             "type": {
               "type": "array",
-              "items": "string"
+              "items": {
+                "type": "record",
+                "name": "StringList",
+                "namespace": "testdata",
+                "fields": [
+                  {
+                    "name": "data",
+                    "type": {
+                      "type": "array",
+                      "items": "string"
+                    },
+                    "default": []
+                  }
+                ]
+              }
             },
             "default": []
           }
         ]
-      },
-      "default": {}
+      }
+    },
+    {
+      "name": "strings",
+      "type": "testdata.StringList",
+      "default": ""
     },
     {
       "name": "string_map",
       "type": {
         "type": "map",
         "values": "testdata.StringList"
-      },
-      "default": {}
+      }
     },
     {
       "name": "a_one_of",

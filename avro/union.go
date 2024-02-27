@@ -26,7 +26,6 @@ func flatten(slice []any) []any {
   var flattened []any
   for _, jsonType := range slice {
     jsonMap, ok := jsonType.(*orderedmap.OrderedMap)
-    LogMsg("%v", reflect.TypeOf(jsonType))
     if ok {
       typeArr, ok := jsonMap.Get("type")
       if ok && reflect.TypeOf(typeArr).Kind() == reflect.Slice {

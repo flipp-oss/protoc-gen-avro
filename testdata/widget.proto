@@ -5,10 +5,6 @@ package testdata;
 import "testdata/foobar.proto";
 import "google/protobuf/timestamp.proto";
 
-message StringList {
-  repeated string data = 1;
-}
-
 message TypeA {
   string foo = 1;
 }

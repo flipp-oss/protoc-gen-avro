@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package testdata;
 
+message StringList {
+  repeated string data = 1;
+}
+
 enum Blarp {
   BLARP_UNSPECIFIED = 0;
   BLARP_ME = 1;
@@ -26,4 +30,5 @@ message Foobar {
   map<string, string> a_string_map = 11;
   map<string, Blarp> a_blarp_map = 12;
   map<bool, Yowza> a_yowza_map = 13;
+  repeated StringList string_lists = 14;
 }
