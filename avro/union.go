@@ -1,32 +1,41 @@
 package avro
 
-import "fmt"
+import (
+  "fmt"
+  "github.com/iancoleman/orderedmap"
+  "reflect"
+)
 
 type Union struct {
   Types []Type
 }
 
 func (u Union) ToJSON(types *TypeRepo) (any, error) {
-  flattened := u.flatten()
-  jsonSlice := make([]any, len(flattened))
-  for i, unionType := range flattened {
+  var jsonSlice []any
+  for _, unionType := range u.Types {
     typeJson, err := unionType.ToJSON(types)
     if err != nil {
       return nil, fmt.Errorf("error parsing union type: %w", err)
     }
-    jsonSlice[i] = typeJson
+    jsonSlice = append(jsonSlice, typeJson)
   }
-  return jsonSlice, nil
+  return flatten(jsonSlice), nil
 }
 
-func (u Union) flatten() []Type {
-  var flattened []Type
-  for _, unionType := range u.Types {
-    switch unionType.(type) {
-    case Union:
-      flattened = append(flattened, unionType.(Union).flatten()...)
-    default:
-      flattened = append(flattened, unionType)
+func flatten(slice []any) []any {
+  var flattened []any
+  for _, jsonType := range slice {
+    jsonMap, ok := jsonType.(*orderedmap.OrderedMap)
+    LogMsg("%v", reflect.TypeOf(jsonType))
+    if ok {
+      typeArr, ok := jsonMap.Get("type")
+      if ok && reflect.TypeOf(typeArr).Kind() == reflect.Slice {
+        flattened = append(flattened, typeArr.([]any)...)
+      } else {
+        flattened = append(flattened, jsonType)
+      }
+    } else {
+      flattened = append(flattened, jsonType)
     }
   }
   return flattened

@@ -2,6 +2,8 @@
 
 # UNRELEASED
 
+- Fix: Union types are now flattened (i.e. if a union has a type which is another union, they will be combined).
+
 # 0.6.1 - 2024-02-27
 
 - Fix: `collapse_fields` was only working on the first instance of the field, not when it was found inside a map etc. later on.
