@@ -3,6 +3,7 @@
 # UNRELEASED
 
 - Feature / breaking change: add `preserve_non_string_maps` and change default behavior to turn all maps into string-keyed ones.
+- Fix: Flatten any instances of `{type: { type: ... } }`
 
 # 0.6.1 - 2024-02-27
 

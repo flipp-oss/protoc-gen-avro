@@ -31,4 +31,5 @@ message Widget {
   StringList strings = 4;
   map<string, StringList> string_map = 5;
   optional AOneOf a_one_of = 6;
+  repeated StringList string_array = 7;
 }

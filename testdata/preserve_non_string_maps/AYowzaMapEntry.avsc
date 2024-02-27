@@ -4,24 +4,21 @@
   "namespace": "testdata.Foobar",
   "fields": [
     {
-      "name": "key",
       "type": "boolean",
+      "name": "key",
       "default": false
     },
     {
+      "type": "record",
       "name": "value",
-      "type": {
-        "type": "record",
-        "name": "Yowza",
-        "namespace": "testdata",
-        "fields": [
-          {
-            "name": "hoo_boy",
-            "type": "float",
-            "default": 0
-          }
-        ]
-      },
+      "namespace": "testdata",
+      "fields": [
+        {
+          "type": "float",
+          "name": "hoo_boy",
+          "default": 0
+        }
+      ],
       "default": {}
     }
   ]
