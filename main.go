@@ -17,7 +17,7 @@ var params input.Params
 var typeRepo *avro.TypeRepo
 
 func processMessage(proto *descriptorpb.DescriptorProto, protoPackage string) {
-	records := avro.RecordFromProto(proto, protoPackage)
+	records := avro.RecordFromProto(proto, protoPackage, typeRepo)
 	for _, record := range records {
 		typeRepo.AddType(record)
 	}

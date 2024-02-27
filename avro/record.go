@@ -42,17 +42,19 @@ func (t Record) ToJSON(types *TypeRepo) (any, error) {
 	return jsonMap, nil
 }
 
-func RecordFromProto(proto *descriptorpb.DescriptorProto, namespace string) []NamedType {
+func RecordFromProto(proto *descriptorpb.DescriptorProto, namespace string, typeRepo *TypeRepo) []NamedType {
 	// Protobuf `map` is actually a record with a `map_entry` boolean set, and two fields ("key" and "value").
 	// Avro only supports maps with string keys, but Protobuf supports maps with any key type.
 	// If we detect a string key, we can turn this into an Avro map, but otherwise we have to leave it as a record.
-	if proto.Options.GetMapEntry() && proto.Field[0].GetType() == descriptorpb.FieldDescriptorProto_TYPE_STRING {
-		return []NamedType{
-			Map{
-				Namespace: namespace,
-			  Name: proto.GetName(),
-			  Values: FieldTypeFromProto(proto.Field[1]),
-  		},
+	if proto.Options.GetMapEntry() {
+		if !typeRepo.PreserveNonStringMaps || proto.Field[0].GetType() == descriptorpb.FieldDescriptorProto_TYPE_STRING {
+			return []NamedType{
+				Map{
+					Namespace: namespace,
+					Name:      proto.GetName(),
+					Values:    FieldTypeFromProto(proto.Field[1]),
+				},
+			}
 		}
 	}
 
@@ -61,7 +63,7 @@ func RecordFromProto(proto *descriptorpb.DescriptorProto, namespace string) []Na
 	nested := make([]NamedType, len(proto.NestedType))
 //	enums := make([]Enum, len(proto.EnumType))
 	for i, field := range proto.NestedType {
-		nested[i] = RecordFromProto(field, fmt.Sprintf("%s.%s", namespace, proto.GetName()))[0]
+		nested[i] = RecordFromProto(field, fmt.Sprintf("%s.%s", namespace, proto.GetName()), typeRepo)[0]
 	}
 	//for i, field := range proto.EnumType {
 	//	enums[i] = EnumFromProto(field)

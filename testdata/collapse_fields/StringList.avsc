@@ -1,8 +1,6 @@
 {
+  "type": "array",
+  "items": "string",
   "name": "data",
-  "type": {
-    "type": "array",
-    "items": "string"
-  },
   "default": []
 }

@@ -4,8 +4,8 @@
   "namespace": "mynamespace",
   "fields": [
     {
-      "name": "bar",
       "type": "string",
+      "name": "bar",
       "default": ""
     }
   ]

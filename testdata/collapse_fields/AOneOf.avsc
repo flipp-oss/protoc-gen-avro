@@ -4,7 +4,6 @@
   "namespace": "testdata",
   "fields": [
     {
-      "name": "a_oneof",
       "type": [
         {
           "type": "record",
@@ -12,8 +11,8 @@
           "namespace": "testdata",
           "fields": [
             {
-              "name": "foo",
               "type": "string",
+              "name": "foo",
               "default": ""
             }
           ]
@@ -24,13 +23,14 @@
           "namespace": "testdata",
           "fields": [
             {
-              "name": "bar",
               "type": "string",
+              "name": "bar",
               "default": ""
             }
           ]
         }
       ],
+      "name": "oneof_types",
       "default": null
     }
   ]

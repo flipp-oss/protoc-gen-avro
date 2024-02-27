@@ -4,8 +4,8 @@
   "namespace": "testdata",
   "fields": [
     {
-      "name": "hoo_boy",
       "type": "float",
+      "name": "hoo_boy",
       "default": 0
     }
   ]

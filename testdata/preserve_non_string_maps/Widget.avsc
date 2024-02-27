@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "Widget",
-  "namespace": "mynamespace",
+  "namespace": "testdata",
   "fields": [
     {
       "type": [
@@ -19,7 +19,7 @@
     {
       "type": "record",
       "name": "foobar",
-      "namespace": "mynamespace",
+      "namespace": "testdata",
       "fields": [
         {
           "type": "string",
@@ -39,7 +39,7 @@
         {
           "type": "record",
           "name": "yowza",
-          "namespace": "mynamespace",
+          "namespace": "testdata",
           "fields": [
             {
               "type": "float",
@@ -51,13 +51,13 @@
         },
         {
           "type": "array",
-          "items": "mynamespace.Blarp",
+          "items": "testdata.Blarp",
           "name": "blarps",
           "default": []
         },
         {
           "type": "array",
-          "items": "mynamespace.Yowza",
+          "items": "testdata.Yowza",
           "name": "yowzas",
           "default": []
         },
@@ -78,7 +78,7 @@
         {
           "type": [
             "null",
-            "mynamespace.Blarp"
+            "testdata.Blarp"
           ],
           "name": "optional_blarp",
           "default": null
@@ -86,7 +86,7 @@
         {
           "type": [
             "null",
-            "mynamespace.Yowza"
+            "testdata.Yowza"
           ],
           "name": "optional_yowza",
           "default": null
@@ -104,15 +104,31 @@
         },
         {
           "type": "map",
-          "values": "mynamespace.Blarp",
+          "values": "testdata.Blarp",
           "name": "a_blarp_map",
           "default": {}
         },
         {
-          "type": "map",
-          "values": "mynamespace.Yowza",
+          "type": "array",
+          "items": {
+            "type": "record",
+            "name": "AYowzaMapEntry",
+            "namespace": "testdata.Foobar",
+            "fields": [
+              {
+                "type": "boolean",
+                "name": "key",
+                "default": false
+              },
+              {
+                "type": "testdata.Yowza",
+                "name": "value",
+                "default": ""
+              }
+            ]
+          },
           "name": "a_yowza_map",
-          "default": {}
+          "default": []
         }
       ],
       "default": {}
@@ -120,7 +136,7 @@
     {
       "type": "record",
       "name": "strings",
-      "namespace": "mynamespace",
+      "namespace": "testdata",
       "fields": [
         {
           "type": "array",
@@ -133,7 +149,7 @@
     },
     {
       "type": "map",
-      "values": "mynamespace.StringList",
+      "values": "testdata.StringList",
       "name": "string_map",
       "default": {}
     },
@@ -143,14 +159,14 @@
         {
           "type": "record",
           "name": "AOneOf",
-          "namespace": "mynamespace",
+          "namespace": "testdata",
           "fields": [
             {
               "type": [
                 {
                   "type": "record",
                   "name": "TypeA",
-                  "namespace": "mynamespace",
+                  "namespace": "testdata",
                   "fields": [
                     {
                       "type": "string",
@@ -162,7 +178,7 @@
                 {
                   "type": "record",
                   "name": "TypeB",
-                  "namespace": "mynamespace",
+                  "namespace": "testdata",
                   "fields": [
                     {
                       "type": "string",
@@ -183,7 +199,7 @@
     },
     {
       "type": "array",
-      "items": "mynamespace.StringList",
+      "items": "testdata.StringList",
       "name": "string_array",
       "default": []
     }

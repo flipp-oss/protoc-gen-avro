@@ -13,6 +13,7 @@ type Params struct {
 	NamespaceMap map[string]string
 	CollapseFields []string
 	RemoveEnumPrefixes bool
+	PreserveNonStringMaps bool
 }
 
 func ReadRequest() (*pluginpb.CodeGeneratorRequest, error) {
@@ -60,6 +61,8 @@ func ParseParams(req *pluginpb.CodeGeneratorRequest) Params {
 			params.CollapseFields = strings.Split(v, ";")
 		} else if k == "remove_enum_prefixes" {
 			params.RemoveEnumPrefixes = v == "true"
+		} else if k == "preserve_non_string_maps" {
+			params.PreserveNonStringMaps = true
 		}
 	}
 	return params

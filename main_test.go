@@ -65,8 +65,13 @@ func runTest(t *testing.T, directory string, options map[string]string) {
     }
     protoc(t, args)
 
-    assertEqualFiles(t, workdir + "/testdata/" + directory, tmpdir)
-
+    testDir := workdir + "/testdata/" + directory
+    if os.Getenv("UPDATE_SNAPSHOTS") != "" {
+        cmd := exec.Command("/bin/sh", "-c", fmt.Sprintf("cp %v/* %v", tmpdir, testDir))
+        cmd.Run()
+    } else {
+        assertEqualFiles(t, testDir, tmpdir)
+    }
 }
 
 func Test_Base(t *testing.T) {
@@ -83,6 +88,10 @@ func Test_EmitOnly(t *testing.T) {
 
 func Test_NamespaceMap(t *testing.T) {
     runTest(t, "namespace_map", map[string]string{"namespace_map": "testdata:mynamespace"})
+}
+
+func Test_PreserveNonStringMaps(t *testing.T) {
+    runTest(t, "preserve_non_string_maps", map[string]string{"preserve_non_string_maps": "true"})
 }
 
 func assertEqualFiles(t *testing.T, original, generated string) {

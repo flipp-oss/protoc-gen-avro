@@ -4,8 +4,8 @@
   "namespace": "testdata",
   "fields": [
     {
-      "name": "foo",
       "type": "string",
+      "name": "foo",
       "default": ""
     }
   ]
