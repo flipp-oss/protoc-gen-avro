@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"github.com/iancoleman/orderedmap"
 	"google.golang.org/protobuf/types/descriptorpb"
-	"reflect"
 )
+
+type noDefaultType struct{}
+var noDefault = noDefaultType{}
 
 type Field struct {
 	Name string
@@ -28,7 +30,7 @@ func (t Field) ToJSON(types *TypeRepo) (any, error) {
 		defaultValue = DefaultValue(typeJson)
 	}
 	// Avro can't actually handle defaults for records
-	if reflect.ValueOf(defaultValue).Kind() != reflect.Map {
+	if defaultValue != noDefault {
 		jsonMap.Set("default", defaultValue)
 	}
 
@@ -111,7 +113,7 @@ func DefaultValue(t any) any {
 	case "map":
 		return map[string]any{}
 	case "record":
-		return map[string]any{}
+		return noDefault
 	case "array":
 		return []any{}
 	}

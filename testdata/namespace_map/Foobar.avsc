@@ -95,21 +95,24 @@
       "type": {
         "type": "map",
         "values": "string"
-      }
+      },
+      "default": {}
     },
     {
       "name": "a_blarp_map",
       "type": {
         "type": "map",
         "values": "mynamespace.Blarp"
-      }
+      },
+      "default": {}
     },
     {
       "name": "a_yowza_map",
       "type": {
         "type": "map",
         "values": "mynamespace.Yowza"
-      }
+      },
+      "default": {}
     },
     {
       "name": "string_lists",

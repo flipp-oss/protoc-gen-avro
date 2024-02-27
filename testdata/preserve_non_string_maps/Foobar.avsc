@@ -95,14 +95,16 @@
       "type": {
         "type": "map",
         "values": "string"
-      }
+      },
+      "default": {}
     },
     {
       "name": "a_blarp_map",
       "type": {
         "type": "map",
         "values": "testdata.Blarp"
-      }
+      },
+      "default": {}
     },
     {
       "name": "a_yowza_map",

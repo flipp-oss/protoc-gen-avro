@@ -2,6 +2,8 @@
 
 # UNRELEASED
 
+- Fix: Accidentally removed map defaults, oops!
+
 # 0.7.1 - 2024-02-27
 
 - Revert and re-fix the issue with flattened `type` declarations.

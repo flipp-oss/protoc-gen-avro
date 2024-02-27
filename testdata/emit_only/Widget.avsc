@@ -115,21 +115,24 @@
             "type": {
               "type": "map",
               "values": "string"
-            }
+            },
+            "default": {}
           },
           {
             "name": "a_blarp_map",
             "type": {
               "type": "map",
               "values": "testdata.Blarp"
-            }
+            },
+            "default": {}
           },
           {
             "name": "a_yowza_map",
             "type": {
               "type": "map",
               "values": "testdata.Yowza"
-            }
+            },
+            "default": {}
           },
           {
             "name": "string_lists",
@@ -166,7 +169,8 @@
       "type": {
         "type": "map",
         "values": "testdata.StringList"
-      }
+      },
+      "default": {}
     },
     {
       "name": "a_one_of",
