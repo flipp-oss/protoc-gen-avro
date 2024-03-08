@@ -1,9 +1,21 @@
 # protoc-gen-avro
+
 Generate Avro schemas from Protobuf files.
 
 ## Usage
 
-Download this project from the Releases page. Put the generated binary in your path:
+### Install using Golang 1.21+
+
+Simply run the following command:
+
+```bash
+go install github.com/flipp-oss/protoc-gen-avro@latest
+```
+
+### Install Manually
+
+Download this project from the Releases page. Put the generated binary in your
+path:
 
 ```bash
 mv protoc-gen-avro /usr/local/bin
@@ -17,7 +29,8 @@ protoc --avro_out=. *.proto
 
 ## Options
 
-* `emit_only` - A semicolon-separated list of records to emit. If not specified, all records will be emitted.
+- `emit_only` - A semicolon-separated list of records to emit. If not specified,
+  all records will be emitted.
 
 ```bash
 protoc --avro_out=. --avro_opt=emit_only=Foo;Bar *.proto
@@ -25,7 +38,8 @@ protoc --avro_out=. --avro_opt=emit_only=Foo;Bar *.proto
 
 This will generate only `Foo.avsc` and `Bar.avsc` files.
 
-* `namespace_map` - A comma-separated list of namespaces to map. If not specified, all namespaces will be mapped.
+- `namespace_map` - A comma-separated list of namespaces to map. If not
+  specified, all namespaces will be mapped.
 
 ```bash
 protoc --avro_out=. --avro_opt=namespace_map=foo:bar,baz:spam *.proto
@@ -33,7 +47,11 @@ protoc --avro_out=. --avro_opt=namespace_map=foo:bar,baz:spam *.proto
 
 ...will change the output namespace for `foo` to `bar` and `baz` to `spam`.
 
-* `collapse_fields` - A semicolon-separated list of records to collapse. Collapsed records should have a single field in them, and they will be replaced in the output by that field. This can be useful to overcome some limitations of Protobuf - e.g. Protobuf doesn't have the ability to have an array of maps, while Avro does.
+- `collapse_fields` - A semicolon-separated list of records to collapse.
+  Collapsed records should have a single field in them, and they will be
+  replaced in the output by that field. This can be useful to overcome some
+  limitations of Protobuf - e.g. Protobuf doesn't have the ability to have an
+  array of maps, while Avro does.
 
 ```bash
 protoc --avro_out=. --avro_opt=collapse_fields=StringList;SomeOtherRecord *.proto
@@ -73,7 +91,9 @@ message MyRecord {
 }
 ```
 
-* `remove_enum_prefixes` - if set to true, will remove the prefixes from enum values. E.g. if you have an enum like:
+- `remove_enum_prefixes` - if set to true, will remove the prefixes from enum
+  values. E.g. if you have an enum like:
+
 ```protobuf
 enum Category {
   CATEGORY_GOOD = 0;
@@ -87,14 +107,13 @@ enum Category {
 {
   "type": "enum",
   "name": "CATEGORY",
-  "symbols": [
-    "GOOD",
-    "BAD"
-  ]
+  "symbols": ["GOOD", "BAD"]
 }
 ```
 
-* `preserve_non_string_maps` - if set to true, will replace maps with non-string keys with records. E.g. if you have a map like:
+- `preserve_non_string_maps` - if set to true, will replace maps with non-string
+  keys with records. E.g. if you have a map like:
+
 ```protobuf
 message MyRecord {
   map<int32, string> my_field = 1;
@@ -150,8 +169,8 @@ message MyRecord {
 
 To Do List:
 
-* Add tests
-* Homebrew?
+- Add tests
+- Homebrew?
 
 ---
 
