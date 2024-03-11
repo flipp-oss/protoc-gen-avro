@@ -23,8 +23,8 @@ message AOneOf {
 message Widget {
   optional google.protobuf.Timestamp from_date = 1;
   google.protobuf.Timestamp to_date = 2;
-  Foobar foobar = 3;
-  StringList strings = 4;
-  map<string, StringList> string_map = 5;
+  map<string, StringList> string_map = 4;
+  StringList strings = 5;
   optional AOneOf a_one_of = 6;
+  Foobar foobar = 7;
 }

@@ -17,6 +17,77 @@
       "default": 0
     },
     {
+      "name": "string_map",
+      "type": {
+        "type": "map",
+        "values": {
+          "type": "record",
+          "name": "StringList",
+          "namespace": "mynamespace",
+          "fields": [
+            {
+              "name": "data",
+              "type": {
+                "type": "array",
+                "items": "string"
+              },
+              "default": []
+            }
+          ]
+        }
+      },
+      "default": {}
+    },
+    {
+      "name": "strings",
+      "type": "mynamespace.StringList",
+      "default": ""
+    },
+    {
+      "name": "a_one_of",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "AOneOf",
+          "namespace": "mynamespace",
+          "fields": [
+            {
+              "name": "oneof_types",
+              "type": [
+                {
+                  "type": "record",
+                  "name": "TypeA",
+                  "namespace": "mynamespace",
+                  "fields": [
+                    {
+                      "name": "foo",
+                      "type": "string",
+                      "default": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "record",
+                  "name": "TypeB",
+                  "namespace": "mynamespace",
+                  "fields": [
+                    {
+                      "name": "bar",
+                      "type": "string",
+                      "default": ""
+                    }
+                  ]
+                }
+              ],
+              "default": null
+            }
+          ]
+        }
+      ],
+      "default": null
+    },
+    {
       "name": "foobar",
       "type": {
         "type": "record",
@@ -135,86 +206,23 @@
             "default": {}
           },
           {
+            "name": "string_list_map",
+            "type": {
+              "type": "map",
+              "values": "mynamespace.StringList"
+            },
+            "default": {}
+          },
+          {
             "name": "string_lists",
             "type": {
               "type": "array",
-              "items": {
-                "type": "record",
-                "name": "StringList",
-                "namespace": "mynamespace",
-                "fields": [
-                  {
-                    "name": "data",
-                    "type": {
-                      "type": "array",
-                      "items": "string"
-                    },
-                    "default": []
-                  }
-                ]
-              }
+              "items": "mynamespace.StringList"
             },
             "default": []
           }
         ]
       }
-    },
-    {
-      "name": "strings",
-      "type": "mynamespace.StringList",
-      "default": ""
-    },
-    {
-      "name": "string_map",
-      "type": {
-        "type": "map",
-        "values": "mynamespace.StringList"
-      },
-      "default": {}
-    },
-    {
-      "name": "a_one_of",
-      "type": [
-        "null",
-        {
-          "type": "record",
-          "name": "AOneOf",
-          "namespace": "mynamespace",
-          "fields": [
-            {
-              "name": "oneof_types",
-              "type": [
-                {
-                  "type": "record",
-                  "name": "TypeA",
-                  "namespace": "mynamespace",
-                  "fields": [
-                    {
-                      "name": "foo",
-                      "type": "string",
-                      "default": ""
-                    }
-                  ]
-                },
-                {
-                  "type": "record",
-                  "name": "TypeB",
-                  "namespace": "mynamespace",
-                  "fields": [
-                    {
-                      "name": "bar",
-                      "type": "string",
-                      "default": ""
-                    }
-                  ]
-                }
-              ],
-              "default": null
-            }
-          ]
-        }
-      ],
-      "default": null
     }
   ]
 }

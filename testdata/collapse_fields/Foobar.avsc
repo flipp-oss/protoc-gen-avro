@@ -115,13 +115,24 @@
       "default": {}
     },
     {
+      "name": "string_list_map",
+      "type": {
+        "type": "map",
+        "values": {
+          "name": "data",
+          "type": "array",
+          "default": [],
+          "items": "string"
+        }
+      },
+      "default": {}
+    },
+    {
       "name": "string_lists",
       "type": {
         "type": "array",
         "items": {
-          "name": "data",
           "type": "array",
-          "default": [],
           "items": "string"
         }
       },

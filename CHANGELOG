@@ -2,6 +2,8 @@
 
 # UNRELEASED
 
+- Fix: Still seeing nested `type: { type: {} }` declarations for maps where the values are collapsed records (only for first invocation).
+
 # 0.7.2 - 2024-02-28
 
 - Fix: Accidentally removed map defaults, oops!

@@ -30,5 +30,6 @@ message Foobar {
   map<string, string> a_string_map = 11;
   map<string, Blarp> a_blarp_map = 12;
   map<bool, Yowza> a_yowza_map = 13;
-  repeated StringList string_lists = 14;
+  map<string, StringList> string_list_map = 14;
+  repeated StringList string_lists = 15;
 }

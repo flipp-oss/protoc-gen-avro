@@ -115,10 +115,10 @@
       "default": {}
     },
     {
-      "name": "string_lists",
+      "name": "string_list_map",
       "type": {
-        "type": "array",
-        "items": {
+        "type": "map",
+        "values": {
           "type": "record",
           "name": "StringList",
           "namespace": "testdata",
@@ -133,6 +133,14 @@
             }
           ]
         }
+      },
+      "default": {}
+    },
+    {
+      "name": "string_lists",
+      "type": {
+        "type": "array",
+        "items": "testdata.StringList"
       },
       "default": []
     }
