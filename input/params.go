@@ -1,19 +1,20 @@
 package input
 
 import (
-  "google.golang.org/protobuf/proto"
-  "google.golang.org/protobuf/types/pluginpb"
-  "io"
-  "os"
-  "strings"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/pluginpb"
+	"io"
+	"os"
+	"strings"
 )
 
 type Params struct {
-	EmitOnly []string
-	NamespaceMap map[string]string
-	CollapseFields []string
-	RemoveEnumPrefixes bool
-	PreserveNonStringMaps bool
+	EmitOnly                     []string
+	NamespaceMap                 map[string]string
+	CollapseFields               []string
+	RemoveEnumPrefixes           bool
+	PreserveNonStringMaps        bool
+	PrefixSchemaFilesWithPackage bool
 }
 
 func ReadRequest() (*pluginpb.CodeGeneratorRequest, error) {
@@ -40,6 +41,8 @@ func parseRawParams(req *pluginpb.CodeGeneratorRequest) map[string]string {
 		paramStrings := strings.Split(token, "=")
 		if len(paramStrings) == 2 {
 			paramMap[paramStrings[0]] = paramStrings[1]
+		} else {
+			paramMap[paramStrings[0]] = "true"
 		}
 	}
 	return paramMap
@@ -63,6 +66,8 @@ func ParseParams(req *pluginpb.CodeGeneratorRequest) Params {
 			params.RemoveEnumPrefixes = v == "true"
 		} else if k == "preserve_non_string_maps" {
 			params.PreserveNonStringMaps = true
+		} else if k == "prefix_schema_files_with_package" {
+			params.PrefixSchemaFilesWithPackage = true
 		}
 	}
 	return params

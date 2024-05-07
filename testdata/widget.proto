@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package testdata;
+package testdata.model;
 
 import "testdata/foobar.proto";
 import "google/protobuf/timestamp.proto";

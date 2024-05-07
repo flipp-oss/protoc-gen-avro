@@ -165,6 +165,18 @@ message MyRecord {
 }
 ```
 
+* `prefix_schema_files_with_package` - if set to true, files will be generated into folders matching the proto package. E.g. :
+```protobuf
+package my.test.data;
+message Yowza {
+  float hoo_boy = 1;
+}
+```
+
+...with this option on, it will be generated as:
+
+`./my.test.data/Yowza.avsc`
+
 ---
 
 To Do List:

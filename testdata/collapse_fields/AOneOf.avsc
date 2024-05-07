@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "AOneOf",
-  "namespace": "testdata",
+  "namespace": "testdata.model",
   "fields": [
     {
       "name": "oneof_types",
@@ -9,7 +9,7 @@
         {
           "type": "record",
           "name": "TypeA",
-          "namespace": "testdata",
+          "namespace": "testdata.model",
           "fields": [
             {
               "name": "foo",
@@ -21,7 +21,7 @@
         {
           "type": "record",
           "name": "TypeB",
-          "namespace": "testdata",
+          "namespace": "testdata.model",
           "fields": [
             {
               "name": "bar",

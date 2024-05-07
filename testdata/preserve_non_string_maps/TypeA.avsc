@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "TypeA",
-  "namespace": "testdata",
+  "namespace": "testdata.model",
   "fields": [
     {
       "name": "foo",

@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "Widget",
-  "namespace": "testdata",
+  "namespace": "testdata.model",
   "fields": [
     {
       "name": "from_date",
@@ -23,7 +23,7 @@
         "values": {
           "type": "record",
           "name": "StringList",
-          "namespace": "testdata",
+          "namespace": "testdata.model",
           "fields": [
             {
               "name": "data",
@@ -40,7 +40,7 @@
     },
     {
       "name": "strings",
-      "type": "testdata.StringList",
+      "type": "testdata.model.StringList",
       "default": ""
     },
     {
@@ -50,7 +50,7 @@
         {
           "type": "record",
           "name": "AOneOf",
-          "namespace": "testdata",
+          "namespace": "testdata.model",
           "fields": [
             {
               "name": "oneof_types",
@@ -58,7 +58,7 @@
                 {
                   "type": "record",
                   "name": "TypeA",
-                  "namespace": "testdata",
+                  "namespace": "testdata.model",
                   "fields": [
                     {
                       "name": "foo",
@@ -70,7 +70,7 @@
                 {
                   "type": "record",
                   "name": "TypeB",
-                  "namespace": "testdata",
+                  "namespace": "testdata.model",
                   "fields": [
                     {
                       "name": "bar",
@@ -92,7 +92,7 @@
       "type": {
         "type": "record",
         "name": "Foobar",
-        "namespace": "testdata",
+        "namespace": "testdata.model",
         "fields": [
           {
             "name": "name",
@@ -118,7 +118,7 @@
             "type": {
               "type": "record",
               "name": "Yowza",
-              "namespace": "testdata",
+              "namespace": "testdata.model",
               "fields": [
                 {
                   "name": "hoo_boy",
@@ -132,7 +132,7 @@
             "name": "blarps",
             "type": {
               "type": "array",
-              "items": "testdata.Blarp"
+              "items": "testdata.model.Blarp"
             },
             "default": []
           },
@@ -140,7 +140,7 @@
             "name": "yowzas",
             "type": {
               "type": "array",
-              "items": "testdata.Yowza"
+              "items": "testdata.model.Yowza"
             },
             "default": []
           },
@@ -164,7 +164,7 @@
             "name": "optional_blarp",
             "type": [
               "null",
-              "testdata.Blarp"
+              "testdata.model.Blarp"
             ],
             "default": null
           },
@@ -172,7 +172,7 @@
             "name": "optional_yowza",
             "type": [
               "null",
-              "testdata.Yowza"
+              "testdata.model.Yowza"
             ],
             "default": null
           },
@@ -193,7 +193,7 @@
             "name": "a_blarp_map",
             "type": {
               "type": "map",
-              "values": "testdata.Blarp"
+              "values": "testdata.model.Blarp"
             },
             "default": {}
           },
@@ -201,7 +201,7 @@
             "name": "a_yowza_map",
             "type": {
               "type": "map",
-              "values": "testdata.Yowza"
+              "values": "testdata.model.Yowza"
             },
             "default": {}
           },
@@ -209,7 +209,7 @@
             "name": "string_list_map",
             "type": {
               "type": "map",
-              "values": "testdata.StringList"
+              "values": "testdata.model.StringList"
             },
             "default": {}
           },
@@ -217,7 +217,7 @@
             "name": "string_lists",
             "type": {
               "type": "array",
-              "items": "testdata.StringList"
+              "items": "testdata.model.StringList"
             },
             "default": []
           },

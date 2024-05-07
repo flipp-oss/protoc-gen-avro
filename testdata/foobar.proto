@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package testdata;
+package testdata.model;
 
 message StringList {
   repeated string data = 1;

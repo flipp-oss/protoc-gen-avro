@@ -28,9 +28,16 @@ func processEnum(proto *descriptorpb.EnumDescriptorProto, protoPackage string) {
 	typeRepo.AddType(enum)
 }
 
+func generateSchemaFilename(record avro.Record) string {
+	if params.PrefixSchemaFilesWithPackage {
+		return fmt.Sprintf("%s/%s.avsc", record.Namespace, record.Name)
+	}
+	return fmt.Sprintf("%s.avsc", record.Name)
+}
+
 func generateFileResponse(record avro.Record) (*pluginpb.CodeGeneratorResponse_File, error) {
 	typeRepo.Start()
-	fileName := fmt.Sprintf("%s.avsc", record.Name)
+	fileName := generateSchemaFilename(record)
 	jsonObj, err := record.ToJSON(typeRepo)
 	if err != nil {
 		return nil, fmt.Errorf("error parsing record %s: %w", record.Name, err)

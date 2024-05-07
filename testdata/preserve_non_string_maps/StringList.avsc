@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "StringList",
-  "namespace": "testdata",
+  "namespace": "testdata.model",
   "fields": [
     {
       "name": "data",
