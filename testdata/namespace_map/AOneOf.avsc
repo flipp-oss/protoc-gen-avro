@@ -6,6 +6,7 @@
     {
       "name": "oneof_types",
       "type": [
+        "null",
         {
           "type": "record",
           "name": "TypeA",

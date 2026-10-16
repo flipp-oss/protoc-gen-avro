@@ -4,6 +4,7 @@ import (
   "fmt"
   "github.com/iancoleman/orderedmap"
   "reflect"
+  "slices"
 )
 
 type Union struct {
@@ -29,13 +30,25 @@ func flatten(slice []any) []any {
     if ok {
       typeArr, ok := jsonMap.Get("type")
       if ok && reflect.TypeOf(typeArr).Kind() == reflect.Slice {
-        flattened = append(flattened, typeArr.([]any)...)
+        for _, nestedType := range typeArr.([]any) {
+          flattened = appendUnique(flattened, nestedType)
+        }
       } else {
         flattened = append(flattened, jsonType)
       }
     } else {
-      flattened = append(flattened, jsonType)
+      flattened = appendUnique(flattened, jsonType)
     }
   }
   return flattened
+}
+
+// Avro unions can't contain the same type twice - e.g. an optional oneof would otherwise
+// give ["null", "null", ...].
+func appendUnique(slice []any, jsonType any) []any {
+  name, ok := jsonType.(string)
+  if ok && slices.Contains(slice, any(name)) {
+    return slice
+  }
+  return append(slice, jsonType)
 }
