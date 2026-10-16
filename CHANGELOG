@@ -2,6 +2,9 @@
 
 # UNRELEASED
 
+- Fix: oneofs generated an invalid schema (a union without `null` but with a `null` default). The union now starts with `null`.
+- Fix: flattened unions no longer contain the same type twice (e.g. an optional collapsed oneof).
+
 # 0.7.4 - 2024-05-01
 
 - Fix: Emit enums in output.

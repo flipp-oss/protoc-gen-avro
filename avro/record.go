@@ -69,9 +69,10 @@ func RecordFromProto(proto *descriptorpb.DescriptorProto, namespace string, type
 		enums[i] = EnumFromProto(field, fmt.Sprintf("%s.%s", namespace, proto.GetName()))
 	}
 	for i, oneof := range proto.OneofDecl {
+		// A oneof can be unset, so the union starts with null - this also makes the null default valid.
 		oneofs[i] = Field{
 			Name: oneof.GetName(),
-			Type: Union{Types: []Type{}},
+			Type: Union{Types: []Type{Bare("null")}},
 		}
 	}
 	for _, field := range proto.Field {
@@ -87,7 +88,7 @@ func RecordFromProto(proto *descriptorpb.DescriptorProto, namespace string, type
 	}
 	for _, oneof := range oneofs {
 		union := oneof.Type.(Union)
-		if len(union.Types) > 0 {
+		if len(union.Types) > 1 {
 			fields = append(fields, oneof)
 		}
 	}
